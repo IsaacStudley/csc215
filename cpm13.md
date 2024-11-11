@@ -10,6 +10,8 @@
 
 - Portions of code can be run and then register contents and memory contents checked
 
+- When tracing with DDT make sure not to go past the return of a subroutine
+
 http://www.gaby.de/cpm/manuals/archive/cpm22htm/ch4.htm
 
 |Command Character|	Result                                          |
@@ -26,3 +28,5 @@ http://www.gaby.de/cpm/manuals/archive/cpm22htm/ch4.htm
 |T	              |traces program execution.                        |
 |U	              |untraced program monitoring.                     |
 |X	              |examines and optionally alters the CPU state.    |
+
+- G(n,m) has DTT go to nH and run up to mH
