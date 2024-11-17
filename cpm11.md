@@ -2,6 +2,8 @@
 
 - We are using ED
 
+- ED (name).ASM makes new assembly file to edit
+
 - Programs should be in all upercase since in 1983 not all terminals in circulation supported lowercase
 
 - -V turns off numbered lines
