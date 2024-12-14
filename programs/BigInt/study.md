@@ -33,4 +33,6 @@ rather than integers. Where would changes need to be made?
 a calculator could be implemented. The clear command sets the current
 value to zero.
 
-- 
+- add 'C' to the OPPSTRINGS, add 'clear' to the Optype, etc
+- after op = GetOperator(); in the main while loop
+- if (op == clear) {accumulator = 0; op = add;}
