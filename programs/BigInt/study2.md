@@ -35,3 +35,20 @@ a limit on the number of digits in a BigInt have in the design of the
 BigInt class?
 
 - An array of ints could be used
+
+##
+
+3. Based on your knowledge of pencil-and-paper methods for doing
+arithmetic, what do you think will be the most difficult arithmetic
+operation (+, *, -) to implement for the BigInt class? Why?
+
+- Multiply, 
+
+##
+
+4. Experiment with the calculator. If you enter abcd1234 when a number
+is expected, what happens? If you enter 1234abcd is the behavior
+different? What happens if you enter an operator that’s not one of the
+three that are implemented?
+
+- 
