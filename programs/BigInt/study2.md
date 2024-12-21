@@ -58,4 +58,6 @@ three that are implemented?
 5. List as many operations as you can that are performed on integers, but
 that are not included in the list of BigInt functions and operators above.
 
-- 
+- Division (w Truncation), Absolute value, Modulus, GCF, LCF, Exponentiation, Factorial
+
+##
