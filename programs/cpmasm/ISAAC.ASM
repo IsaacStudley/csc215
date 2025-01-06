@@ -19,13 +19,13 @@ TPA     EQU     100H    ; Transient Program Area
 ; Main Program Start
 START:  LXI     SP,STAK ; Set up user's stack
         MVI     D, 0x0E        ; Load the device address for serial output (assumed address for terminal)
-        MVI     R0, 3          ; Position of '*' is at index 2
+        MVI     R0, 3          ; Position of '*' is at index 3
  
         ; Main loop for user input and moving the '*'
 START1: CALL    CCRLF   ; Start a new line
         LXI     H,SINON ; With sign-on message
-START2: LXI     H,MSG1  ; MSG1 propts for first number
-START3: LXI     H,MSG2  ; MSG2 PROPTS FOR SECOND NUMBER 
+START2: LXI     H,MSG1  ; MSG1 prints initial asterisk position
+START3: LXI     H,MSG2  ; MSG2 prompts for input 
         ; Now get user input (LEFT, RIGHT, or E)
         CALL    CIMSG          ; Get user input into INBUF
         CALL    CCRLF          ; Print carriage return after input
