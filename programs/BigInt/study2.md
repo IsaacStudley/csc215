@@ -42,7 +42,7 @@ BigInt class?
 arithmetic, what do you think will be the most difficult arithmetic
 operation (+, *, -) to implement for the BigInt class? Why?
 
-- Multiply, 
+- Multiply,    
 
 ##
 
