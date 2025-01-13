@@ -1,0 +1,6 @@
+[submodule "programs/cardgames/cards"]
+	path = programs/cardgames/cards
+	url = https://github.com/BlueZeeKing/cards
+[submodule "programs/cardgames/ncurses"]
+	path = programs/cardgames/ncurses
+	url = https://github.com/mirror/ncurses
