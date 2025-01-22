@@ -1,8 +1,17 @@
-struct bigint {
-    char negative;
-    char numdigits;
-    char* digits;
-};
+#include <string>
+using namespace std;
 
-void set_bigint();
-char* get_bigint();
+class BigInt
+{
+    bool negative;
+    string digits;
+
+    public:
+    // constructors
+    BigInt();
+    BigInt(int);
+    BigInt(string);
+
+    // member functions
+    string to_string() const;
+};
