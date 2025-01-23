@@ -1,6 +1,10 @@
 #include <string>
 using namespace std;
 
+string increment_digit_string(const string &);
+string sum_common_len_digit_strs(const string&, const string&);
+string dif_common_len_digit_strs(const string&, const string&);
+
 class BigInt
 {
     bool negative;
@@ -14,4 +18,6 @@ class BigInt
 
     // member functions
     string to_string() const;
+
+    BigInt operator-(const BigInt&) const;
 };
