@@ -6,6 +6,12 @@
         "CHRNUMS.C": "cpp",
         "1-7.C": "cpp",
         "1-8.C": "cpp",
-        "DAY.C": "cpp"
+        "DAY.C": "cpp",
+        "xstring": "cpp",
+        "limits": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "vector": "cpp",
+        "xutility": "cpp"
     }
 }

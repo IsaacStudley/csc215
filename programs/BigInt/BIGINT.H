@@ -3,7 +3,6 @@ using namespace std;
 
 string increment_digit_string(const string &);
 string sum_common_len_digit_strs(const string&, const string&);
-string dif_common_len_digit_strs(const string&, const string&);
 
 class BigInt
 {
@@ -18,7 +17,13 @@ class BigInt
 
     // member functions
     string to_string() const;
-
+    bool operator==(const BigInt&) const;
+    bool operator>(const BigInt&) const;
+    bool operator!=(const BigInt&) const;
+    bool operator<=(const BigInt&) const;
+    bool operator<(const BigInt&) const;
+    bool operator>=(const BigInt&) const;
+    BigInt operator+(const BigInt&) const;
     BigInt operator-(const BigInt&) const;
     BigInt operator*(const BigInt&) const;
 };
