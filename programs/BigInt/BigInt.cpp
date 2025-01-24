@@ -153,42 +153,10 @@ BigInt BigInt::operator+(const BigInt& i2) const
 
 BigInt BigInt::operator-(const BigInt& i2) const
 {
-    //i2 = BigInt(-i2);
     BigInt i2("-"+i2.digits); // trying to make i2 negative and keep the rest the same
-    if ((*this).digits.size() == i2.digits.size()) {
-        string raw_sum = sum_common_len_digit_strs((*this).digits, i2.digits);
-        if (raw_sum[0] == 'c')
-            return BigInt("1" + raw_sum.substr(2));
-        return BigInt(raw_sum);
-    }
-        
-    // Addends have different numbers of digits
-    const BigInt *longer;
-    const BigInt *shorter;
-    int common, extra;
-    string summed_common_digits, leading_digits;
-
-    if ((*this).digits.size() > i2.digits.size()) {
-        longer = this;
-        shorter = &i2;
-    } else {
-        longer = &i2;
-        shorter = this;
-    };
-
-    common = shorter->digits.size();
-    extra = longer->digits.size() - common;
-    summed_common_digits = sum_common_len_digit_strs(
-       shorter->digits, 
-       longer->digits.substr(extra)
-    );
-    leading_digits = longer->digits.substr(0, extra);
-
-    if (summed_common_digits[0] != 'c')
-        return BigInt(leading_digits + summed_common_digits);
-
-    return BigInt(increment_digit_string(leading_digits) +
-                  summed_common_digits.substr(2));
+    BigInt i3((*this).digits);
+    i3 = i3+i2;
+    return(BigInt(i3.digits));
 }
 
 BigInt BigInt::operator*(const BigInt& i2) const
