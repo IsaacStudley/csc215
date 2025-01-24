@@ -44,7 +44,7 @@ string dif_common_len_digit_strs(const string &s1, const string &s2)
     string dif = s1;
 
     for (int i = s1.size() - 1; i >= 0; i--) {
-        digit_dif = to_num(s1[i]) + to_num(s2[i]) + carry;
+        digit_dif = to_num(s1[i]) + to_num(s2[i]) + carry; 
         dif[i] = digit_to_char(digit_dif % 10);
         carry = digit_dif > 9 ? 1 : 0;
     }
@@ -113,4 +113,45 @@ BigInt BigInt::operator-(const BigInt& i2) const
 
     return BigInt(increment_digit_string(leading_digits) +
                   summed_common_digits.substr(2));
+}
+
+BigInt BigInt::operator*(const BigInt& i2) const
+{
+    for (int i = ; i >= 0; i--) { // 1/23 something that is just the numerical i2
+  
+    if ((*this).digits.size() == i2.digits.size()) {
+        string raw_sum = sum_common_len_digit_strs((*this).digits, i2.digits);
+        if (raw_sum[0] == 'c')
+            return BigInt("1" + raw_sum.substr(2));
+        return BigInt(raw_sum);
+    }
+        
+    // Addends have different numbers of digits
+    const BigInt *longer;
+    const BigInt *shorter;
+    int common, extra;
+    string summed_common_digits, leading_digits;
+
+    if ((*this).digits.size() > i2.digits.size()) {
+        longer = this;
+        shorter = &i2;
+    } else {
+        longer = &i2;
+        shorter = this;
+    };
+
+    common = shorter->digits.size();
+    extra = longer->digits.size() - common;
+    summed_common_digits = sum_common_len_digit_strs(
+       shorter->digits, 
+       longer->digits.substr(extra)
+    );
+    leading_digits = longer->digits.substr(0, extra);
+
+    if (summed_common_digits[0] != 'c')
+        return BigInt(leading_digits + summed_common_digits);
+
+    return BigInt(increment_digit_string(leading_digits) +
+                  summed_common_digits.substr(2));
+}
 }

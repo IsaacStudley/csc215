@@ -20,4 +20,5 @@ class BigInt
     string to_string() const;
 
     BigInt operator-(const BigInt&) const;
+    BigInt operator*(const BigInt&) const;
 };
