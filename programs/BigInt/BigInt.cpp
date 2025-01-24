@@ -153,9 +153,13 @@ BigInt BigInt::operator+(const BigInt& i2) const
 
 BigInt BigInt::operator-(const BigInt& i2) const
 {
-    BigInt i2("-"+i2.digits); // trying to make i2 negative and keep the rest the same
+    BigInt i1(i2.digits); // trying to make i2 negative and keep the rest the same
+    i1.negative = true;
+    if (i2.negative == true){
+        i1.negative = false;  // 1/24 accounting for negative numbers
+    }
     BigInt i3((*this).digits);
-    i3 = i3+i2;
+    i3 = i3+i1;
     return(BigInt(i3.digits));
 }
 
@@ -166,5 +170,8 @@ BigInt BigInt::operator*(const BigInt& i2) const
     for (BigInt i = i2.digits; i >= 0; i-1) { // 1/23 something that is just the numerical i2
     final_value = final_value+i3;
     }
-    return BigInt(final_value); // 1/24 this may only work right with positive numbers
+    if (i2.negative != (*this).negative){
+        final_value.negative = true; // 1/24 accounting for negative numbers
+    }
+    return BigInt(final_value); 
 }
