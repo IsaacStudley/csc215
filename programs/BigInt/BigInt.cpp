@@ -62,21 +62,31 @@ string BigInt::to_string() const
     return (!negative) ? digits : "-" + digits;
 }
 
+bool BigInt::operator==(const BigInt& i2) const
+{
+    if (digits.size() != i2.digits.size()) return false;
+    if (negative != i2.negative) return false;
+    for (int i = 0; i < digits.size(); i++)
+        if (digits[i] != i2.digits[i])
+            return false;
+    return true;
+}
+
 bool BigInt::operator>(const BigInt& i2) const
 {
-    if (!is_neg && i2.is_neg) return true;
-    if (is_neg && !i2.is_neg) return false;
+    if (!negative && i2.negative) return true;
+    if (negative && !i2.negative) return false;
     // They have the same sign
     if (digits.size() > i2.digits.size()) {
-        return is_neg ? false : true;
+        return negative ? false : true;
     }
     if (digits.size() < i2.digits.size()) {
-        return is_neg ? true : false;
+        return negative ? true : false;
     }
     // They have the same number of digits 
     for (int i = 0; i < digits.size(); i++) {
         if (digits[i] > i2.digits[i]) {
-            return is_neg ? false : true;
+            return negative ? false : true;
         }
     }
     // They are equal
