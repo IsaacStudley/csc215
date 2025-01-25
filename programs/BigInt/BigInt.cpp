@@ -186,8 +186,25 @@ BigInt BigInt::operator/(const BigInt& i2) const // 1/24 this is division with t
     final_value = final_value+1;
     counter = counter+i;
     }
+    final_value = final_value-1; // 1/25 fixing so it actually truncates down
     if (i2.negative != (*this).negative){
         final_value.negative = true; // 1/24 accounting for negative numbers
     }
+    return BigInt(final_value); 
+}
+
+BigInt BigInt::operator%(const BigInt& i2) const 
+{
+                                            // 1/25 This function replicates how the % operater
+                                            // normally works in C++, which is different than the
+                                            // mathmatical definition when dealing with negatives
+    BigInt final_value(0);                 
+    BigInt counter(0);
+    
+    counter = (*this)/i2;
+    counter = counter*i2;
+    counter = (*this)-counter;
+    final_value = counter;
+
     return BigInt(final_value); 
 }
