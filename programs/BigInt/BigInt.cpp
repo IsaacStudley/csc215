@@ -208,3 +208,20 @@ BigInt BigInt::operator%(const BigInt& i2) const
 
     return BigInt(final_value); 
 }
+
+BigInt BigInt::operator!() const  
+{
+if ((*this)<=1){
+return BigInt(1);  // 1/25 if a negative number is ! it will return 1 as this seems to be standard in programming
+}
+    BigInt final_value(0);                 
+    BigInt counter = (*this).digits;
+    
+    for (BigInt i = counter-1; i >= 1; i-1) {
+    counter = counter*i;
+    }
+
+    final_value = counter;
+
+    return BigInt(final_value); 
+}
