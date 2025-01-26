@@ -12,6 +12,7 @@
         "initializer_list": "cpp",
         "utility": "cpp",
         "vector": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "string": "cpp"
     }
 }

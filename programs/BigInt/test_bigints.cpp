@@ -65,3 +65,47 @@ TEST_CASE("Test can add BigInts") {
     CHECK((i1 + i2).to_string() == "444");
     CHECK((i1 + i3).to_string() == "43333");
 }
+
+TEST_CASE("Test can add BigInts") {
+    BigInt i1("123");
+    BigInt i2("321");
+    BigInt i3("43210");
+    BigInt i4("9999");
+    BigInt i5("1");
+    BigInt i6("123456789123456789123456789");
+    CHECK((i1 + i2).to_string() == "444");
+    CHECK((i1 + i3).to_string() == "43333");
+    CHECK((i4 + i5).to_string() == "10000");
+    CHECK((i6 + i6).to_string() == "246913578246913578246913578");
+}
+
+TEST_CASE("Test can subtract BigInts") {
+    BigInt i1("432");
+    BigInt i2("121");
+    BigInt i3("990");
+    BigInt i4("1");
+    CHECK((i3 - i4).to_string() == "989");
+
+TEST_CASE("Test can multiply BigInts") {
+BigInt i1("423");
+BigInt i2("5");
+ CHECK((i1 - i2).to_string() == "2115");
+}
+
+TEST_CASE("Test can divide BigInts") {
+BigInt i1("2115");
+BigInt i2("5");
+ CHECK((i1/i2).to_string() == "423");
+}
+
+TEST_CASE("Test can modulus BigInts") {
+BigInt i1("17");
+BigInt i2("5");
+ CHECK((i1%i2).to_string() == "2");
+}
+
+TEST_CASE("Test can factorial BigInt") {
+BigInt i1("8");
+ CHECK((i1!).to_string() == "40320");
+}
+
