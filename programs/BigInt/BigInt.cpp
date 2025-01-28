@@ -211,9 +211,10 @@ BigInt BigInt::operator-() const{
 
 BigInt BigInt::operator*(const BigInt& i2) const
 {
+  //  return BigInt(0); 
     BigInt i3((*this).digits);
     BigInt final_value(0);
-    for (BigInt i = i2.digits; i >= 0; i-1) { // 1/23 something that is just the numerical i2
+    for (BigInt i = i2.digits; i >= 1; i = i-1) { // 1/23 something that is just the numerical i2
     final_value = final_value+i3;
     }
     if (i2.negative != (*this).negative){

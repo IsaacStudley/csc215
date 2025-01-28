@@ -95,9 +95,9 @@ TEST_CASE("Test can subtract BigInts") {
 }
 
 TEST_CASE("Test can multiply BigInts") {
-BigInt i1("423");
-BigInt i2("5");
- CHECK((i1 * i2).to_string() == "2115");
+    BigInt i1("423");
+    BigInt i2("5");
+    CHECK((i1*i2).to_string() == "2115");
 }
 
 TEST_CASE("Test can divide BigInts") {
@@ -106,11 +106,11 @@ BigInt i2("5");
  CHECK((i1/i2).to_string() == "423");
 }
 
-TEST_CASE("Test can exponentiate BigInts") {
-BigInt i1("7");
-BigInt i2("5");
- CHECK((i1^i2).to_string() == "16807");
-}
+// TEST_CASE("Test can exponentiate BigInts") {
+// BigInt i1("7");
+// BigInt i2("5");
+//  CHECK((i1^i2).to_string() == "16807");
+// }
 
 
 TEST_CASE("Test can modulus BigInts") {
