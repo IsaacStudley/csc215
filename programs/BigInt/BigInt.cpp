@@ -193,6 +193,21 @@ BigInt BigInt::operator/(const BigInt& i2) const // 1/24 this is division with t
     return BigInt(final_value); 
 }
 
+BigInt BigInt::operator^(const BigInt& i2) const 
+{
+    BigInt final_value(0);                 
+    BigInt counter = (*this).digits;
+    BigInt counter2 = (*this).digits;
+    
+    for (BigInt i = i2; i >= 1; i-1) {
+    counter = counter*counter2;
+    }
+
+    final_value = counter;
+
+    return BigInt(final_value);
+}
+
 BigInt BigInt::operator%(const BigInt& i2) const 
 {
                                             // 1/25 This function replicates how the % operater
