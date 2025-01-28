@@ -198,12 +198,16 @@ BigInt BigInt::operator^(const BigInt& i2) const
     BigInt final_value(0);                 
     BigInt counter = (*this).digits;
     BigInt counter2 = (*this).digits;
+    BigInt i3 = i2.digits;
     
-    for (BigInt i = i2; i >= 1; i-1) {
+    for (BigInt i = i3; i >= 1; i-1) {
     counter = counter*counter2;
     }
 
     final_value = counter;
+    if(i3%2 == 1 && (*this).negative == true){
+    final_value.negative = true;
+    }
 
     return BigInt(final_value);
 }

@@ -99,6 +99,13 @@ BigInt i2("5");
 }
 
 TEST_CASE("Test can modulus BigInts") {
+BigInt i1("7");
+BigInt i2("5");
+ CHECK((i1^i2).to_string() == "16807");
+}
+
+
+TEST_CASE("Test can modulus BigInts") {
 BigInt i1("17");
 BigInt i2("5");
  CHECK((i1%i2).to_string() == "2");
