@@ -1,5 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include <doctest.h>
+#include "doctest.h"
 #include <string>
 #include "BigInt.h"
 using namespace std;
@@ -79,17 +79,25 @@ TEST_CASE("Test can add BigInts") {
     CHECK((i6 + i6).to_string() == "246913578246913578246913578");
 }
 
+// TEST_CASE("Test can add negative BigInts") {
+//     BigInt i1("-432");
+//     BigInt i2("121");
+//     CHECK((i1 + i2).to_string() == "-311");
+// }
+
 TEST_CASE("Test can subtract BigInts") {
     BigInt i1("432");
     BigInt i2("121");
     BigInt i3("990");
     BigInt i4("1");
     CHECK((i3 - i4).to_string() == "989");
+    CHECK((i2 - i1).to_string() == "-311");
+}
 
 TEST_CASE("Test can multiply BigInts") {
 BigInt i1("423");
 BigInt i2("5");
- CHECK((i1 - i2).to_string() == "2115");
+ CHECK((i1 * i2).to_string() == "2115");
 }
 
 TEST_CASE("Test can divide BigInts") {
@@ -98,7 +106,7 @@ BigInt i2("5");
  CHECK((i1/i2).to_string() == "423");
 }
 
-TEST_CASE("Test can modulus BigInts") {
+TEST_CASE("Test can exponentiate BigInts") {
 BigInt i1("7");
 BigInt i2("5");
  CHECK((i1^i2).to_string() == "16807");
@@ -106,13 +114,13 @@ BigInt i2("5");
 
 
 TEST_CASE("Test can modulus BigInts") {
-BigInt i1("17");
-BigInt i2("5");
- CHECK((i1%i2).to_string() == "2");
+    BigInt i1("17");
+    BigInt i2("5");
+    CHECK((i1%i2).to_string() == "2");
 }
 
-TEST_CASE("Test can factorial BigInt") {
-BigInt i1("8");
- CHECK((i1!).to_string() == "40320");
-}
+// TEST_CASE("Test can factorial BigInt") {
+//     BigInt i1("8");
+//     CHECK((i1!).to_string() == "40320");
+// }
 

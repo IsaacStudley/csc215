@@ -136,6 +136,7 @@ BigInt BigInt::operator+(const BigInt& i2) const
         shorter = this;
     };
 
+
     common = shorter->digits.size();
     extra = longer->digits.size() - common;
     summed_common_digits = sum_common_len_digit_strs(
@@ -151,16 +152,61 @@ BigInt BigInt::operator+(const BigInt& i2) const
                   summed_common_digits.substr(2));
 }
 
-BigInt BigInt::operator-(const BigInt& i2) const
-{
-    BigInt i1(i2.digits); // trying to make i2 negative and keep the rest the same
-    i1.negative = true;
-    if (i2.negative == true){
-        i1.negative = false;  // 1/24 accounting for negative numbers
+// BigInt BigInt::operator-(const BigInt& i2) const
+// {
+//     BigInt i1(i2.digits); // trying to make i2 negative and keep the rest the same
+//     i1.negative = true;
+//     if (i2.negative == true){
+//         i1.negative = false;  // 1/24 accounting for negative numbers
+//     }
+//     BigInt i3((*this).digits);
+//     i3 = i3+i1;
+//     return(BigInt(i3.digits));
+// }
+
+BigInt BigInt::operator-(const BigInt &b2) const {
+    if (this->negative && !b2.negative) return -((-*this) + b2);
+    if(!this->negative && b2.negative) return *this + (-b2);
+    if (this->negative && b2.negative) return (-b2) - (-*this);
+    if (*this < b2) return  -(b2 - *this);
+
+    
+    string n1 = this->digits;
+    string n2 = b2.digits;
+    string r = "";
+
+    while (n1.size() < n2.size()){
+        n1.insert(n1.begin(), '0');
     }
-    BigInt i3((*this).digits);
-    i3 = i3+i1;
-    return(BigInt(i3.digits));
+
+    while (n2.size() < n1.size()){
+        n2.insert(n2.begin(), '0');
+    }
+
+    int c = 0;
+    for (int i = n1.size() -1; i >= 0; i--){
+        int d = (n1[i] - '0') - (n2[i] - '0') - c;
+        if (d < 0){
+            d += 10;
+            c = 1; // setting the carry to 1 when the subtraction is too large
+        }else{
+            c = 0;
+        }
+        r.insert(r.begin(), d + '0'); //finalizingi the result before loop
+
+    }
+
+    while(r.size() > 1 && r.front() == '0'){
+        r.erase(r.begin());
+    }
+    return BigInt(r);
+
+}
+
+BigInt BigInt::operator-() const{
+    BigInt result = *this;
+    result.negative =!negative;
+    return result;
 }
 
 BigInt BigInt::operator*(const BigInt& i2) const
