@@ -225,15 +225,16 @@ BigInt BigInt::operator*(const BigInt& i2) const
 
 BigInt BigInt::operator/(const BigInt& i2) const // 1/24 this is division with truncation
 {
-    BigInt i3((*this).digits);
+    BigInt limit((*this).digits);
     BigInt final_value(0);
     BigInt counter(0);
-    BigInt i = i2.digits;
-    while (counter<=i3) { // 1/24 adds i over and over and sees how many times it takes to equal *this
-    final_value = final_value+1;
-    counter = counter+i;
+    BigInt ment(i2.digits);
+    limit = limit*2;
+    while (counter<limit) { // 1/24 adds i over and over and sees how many times it takes to equal *this
+    final_value = final_value+2;
+    counter = counter+ment;
     }
-    final_value = final_value-1; // 1/25 fixing so it actually truncates down
+   // final_value = final_value-1; // 1/25 fixing so it actually truncates down
     if (i2.negative != (*this).negative){
         final_value.negative = true; // 1/24 accounting for negative numbers
     }
